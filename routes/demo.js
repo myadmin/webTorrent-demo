@@ -1,19 +1,46 @@
-let fs = require('fs');
-let path = require('path');
-let config = require('../config');
-let WebTorrent = require('webtorrent');
+var WebTorrent = require('../config/webTorrent');
+var fs = require('fs');
+let filePath = process.cwd() + '/public/img/logo.png';
+let client = new WebTorrent();
+require('events').EventEmitter.defaultMaxListeners = 1000;
 
-let filePath = path.resolve(config.root + '/public/img/logo.png');
+// client.seed(filePath, (torrent) => {
+//     console.log('torrentId (info hash):', torrent.infoHash)
+//     console.log('torrentId (magnet link):', torrent.magnetURI)
+// });
 
-fs.readFile(filePath, 'utf-8', function (err, data) {
+
+// '/Users/zhouwei/Downloads/books'
+let file = process.cwd() + '/file/';
+fs.readdir(file, (err, files) => {
     if (err) {
         console.error(err);
     } else {
-        console.log(data);
-        let client = new WebTorrent();
+        var length = files.length;
+        console.log(length);
+        console.log(Date.now())
+        var iNow = 0;
+        function recursion () {
+            iNow++;
+            if (iNow > 60) {
+                console.log(Date.now());
+                // process.exit();
+            } else {
+                client.seed(file + files[iNow], (torrent) => {
+                    console.log('torrentId (info hash):', torrent.infoHash);
+                    console.log('torrentId (current iNow):', iNow);
+                    recursion();
+                    // fs.writeFile(process.cwd() + '/file/' + iNow + '.txt', torrent.infoHash, (err) => {
+                    //     recursion();
+                    // });
+                });
 
-        client.seed(data, (torrent) => {
-            console.log(torrent.magnetURI)
-        });
+                client.on('error', function (err) {
+                    if (err) console.error(err);
+                })
+            }
+        }
+
+        recursion();
     }
-});
+})

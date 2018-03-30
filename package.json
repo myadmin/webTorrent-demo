@@ -29,6 +29,7 @@
     "body-parser": "~1.18.2",
     "bootstrap": "^3.3.7",
     "cookie-parser": "~1.4.3",
+    "electron-webrtc": "^0.3.0",
     "express": "^4.16.2",
     "express3-handlebars": "^0.5.2",
     "formidable": "^1.1.1",
@@ -46,7 +47,8 @@
     "serve-favicon": "~2.4.5",
     "webpack-hmr": "^1.0.2",
     "webpack-loader": "0.0.1",
-    "webtorrent": "^0.98.24"
+    "webtorrent": "^0.98.24",
+    "webtorrent-cli": "^1.11.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

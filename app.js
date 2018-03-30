@@ -8,7 +8,7 @@ let bodyParser = require('body-parser');
 
 let index = require('./routes/index');
 let app = express();
-
+require('./routes/demo');
 //设置模板引擎，使用handlebars做模板引擎，后缀名依然可以使用html
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.html', handlebars.engine);
