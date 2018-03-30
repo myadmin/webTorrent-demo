@@ -24,7 +24,7 @@ fs.readdir(file, (err, files) => {
             iNow++;
             if (iNow > 60) {
                 console.log(Date.now());
-                // process.exit();
+                process.exit();
             } else {
                 client.seed(file + files[iNow], (torrent) => {
                     console.log('torrentId (info hash):', torrent.infoHash);

@@ -11,9 +11,9 @@ let AV = require('leanengine');
 
 //中国
 AV.init({
-    appId: process.env.LEANCLOUD_APP_ID || 'UTAeNYuETt2KozYAIyt4dHWx-gzGzoHsz',
-    appKey: process.env.LEANCLOUD_APP_KEY || '2VVg0WstAAIvH9Fq2gRgowex',
-    masterKey: process.env.LEANCLOUD_APP_MASTER_KEY || 'VO5uuHHH3nNcl6OJqoBjuwvs'
+    appId: process.env.LEANCLOUD_APP_ID || '43ErKK5cM1M6K1ShXFJQRqE2-gzGzoHsz',
+    appKey: process.env.LEANCLOUD_APP_KEY || 'oN7218Lkutd0zqBMI06vKC6U',
+    masterKey: process.env.LEANCLOUD_APP_MASTER_KEY || '9NsvzREuHjJoOnxaA95kSuXA'
 });
 
 
