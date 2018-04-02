@@ -9,7 +9,6 @@ require('events').EventEmitter.defaultMaxListeners = 1000;
 //     console.log('torrentId (magnet link):', torrent.magnetURI)
 // });
 
-
 // '/Users/zhouwei/Downloads/books'
 let file = process.cwd() + '/file/';
 fs.readdir(file, (err, files) => {
