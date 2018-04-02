@@ -17,30 +17,32 @@ fs.readdir(file, (err, files) => {
         console.error(err);
     } else {
         var length = files.length;
-        console.log(length);
-        console.log(Date.now())
-        var iNow = 0;
-        function recursion () {
-            iNow++;
-            if (iNow > 60) {
-                console.log(Date.now());
-                process.exit();
-            } else {
-                client.seed(file + files[iNow], (torrent) => {
+        // console.log(length);
+        // console.log(Date.now())
+        // var iNow = -1;
+        // function recursion () {
+        //     iNow++;
+        //     if (iNow > length) {
+        //         console.log(Date.now());
+        //         return false;
+        //     } else {
+        //         client.seed(file + files[iNow], (torrent) => {
+        //             console.log('torrentId (info hash):', torrent.infoHash);
+        //             console.log('torrentId (current iNow):', iNow);
+        //             recursion();
+        //         });
+        //     }
+        // }
+        //
+        // recursion();
+        //
+        for (var i = 0; i < length; i++) {
+            (function (index) {
+                client.seed(file + files[index], (torrent) => {
                     console.log('torrentId (info hash):', torrent.infoHash);
-                    console.log('torrentId (current iNow):', iNow);
-                    recursion();
-                    // fs.writeFile(process.cwd() + '/file/' + iNow + '.txt', torrent.infoHash, (err) => {
-                    //     recursion();
-                    // });
+                    console.log('torrentId (current iNow):', index);
                 });
-
-                client.on('error', function (err) {
-                    if (err) console.error(err);
-                })
-            }
+            })(i);
         }
-
-        recursion();
     }
 })
