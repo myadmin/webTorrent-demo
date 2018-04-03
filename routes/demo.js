@@ -39,9 +39,12 @@ fs.readdir(file, (err, files) => {
             (function (index) {
                 client.seed(file + files[index], (torrent) => {
                     console.log('torrentId (info hash):', torrent.infoHash);
+                    console.log('torrentId (info URI):', torrent.magnetURI);
                     console.log('torrentId (current iNow):', index);
                 });
             })(i);
         }
     }
 })
+
+//6V8vnGy9erzlmkMU
